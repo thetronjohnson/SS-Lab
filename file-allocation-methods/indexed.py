@@ -17,7 +17,6 @@ array = [Block(0,None) for i in range(size)]
 def main():
 	global array
 	global size
-	global index_array
 	idx, no = map(int,input("Enter index block number and the number of files on the index: ").split())
 	if(array[idx].value==0):
 		array[idx] = Block(idx,None)
