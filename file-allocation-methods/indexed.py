@@ -1,4 +1,3 @@
-
 class Block:
 	def __init__(self,value,nxt):
 		self.value = value
@@ -12,7 +11,6 @@ class Block:
 
 size = int(input('Enter the size of the storage: '))
 array = [Block(0,None) for i in range(size)]
-
 
 def main():
 	global array
@@ -37,7 +35,6 @@ def main():
 			print("Location is already allocated")
 			res = [j for j,val in enumerate(array) if val.value==0]
 			i = res[0]
-
 	print(f"Index: {idx}\n Index Table: {array[idx].table}")
 
 def driver():
