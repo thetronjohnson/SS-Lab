@@ -1,3 +1,5 @@
+from termcolor import colored
+
 class Directory:
 	def __init__(self,name):
 		self.name = name
@@ -44,9 +46,9 @@ def driver(directory,OPTIONS,option):
 			filename = input("Enter filename: ")
 			directory.search(filename)
 		elif(OPTIONS[option]==4):
-			print(f"Directory : {directory.name}")
+			print(colored(f"Directory : {directory.name}","red"))
 			for file in directory.files:
-				print(f"{file}  ",end="")
+				print(colored(f"{file}  ","blue"),end="")
 			print()
 		elif(OPTIONS[option]==5):
 			print("Exiting...")
@@ -59,7 +61,7 @@ def driver(directory,OPTIONS,option):
 
 name = input("Enter the directory name: ")
 directory  = Directory(name)
-print(f"Directory {directory.name} has been created\n")
+print((colored(f"Directory {directory.name} has been created\n","yellow")))
 while(1):
 	try:
 		option = input("Enter Command: ")

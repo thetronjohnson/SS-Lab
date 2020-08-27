@@ -78,6 +78,7 @@ def driver(directory,OPTIONS,option):
 		foldername = input("Enter foldername to open: ")
 		if(foldername in directory.folders):
 			require_folder = directory.folders[foldername]
+			print(colored(f"Location: {directory.name}/{foldername}","red"))
 			for name in require_folder.files:
 				print(colored(f"{name} ","blue"),end="")
 
