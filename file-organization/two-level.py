@@ -45,9 +45,13 @@ OPTIONS = {
 	'remove':2,
 	'search':3,
 	'display':4,
-	'exit':5
+	'exit':5,
+	'open folder':7,
+	'insert into':8
 }
 
+
+	
 
 def driver(directory,OPTIONS,option):
 	if(OPTIONS[option]==6):
@@ -68,8 +72,19 @@ def driver(directory,OPTIONS,option):
 		for folder in directory.folders:
 			print(colored(f"{folder} ","green"),end="")
 		for file in directory.files:
-			print(colored(f"{file}","blue") ,end="")
+			print(colored(f"{file} ","blue") ,end="")
 		print()
+	elif(OPTIONS[option]==7):
+		foldername = input("Enter foldername to open: ")
+		if(foldername in directory.folders):
+			require_folder = directory.folders[foldername]
+			for name in require_folder.files:
+				print(colored(f"{name} ","blue"),end="")
+
+	elif(OPTIONS[option]==8):
+		foldername = input("Enter foldername to add files: " )
+		filename = input("Enter filename: ")
+		directory.folders[foldername].createfile(filename)
 	elif(OPTIONS[option]==5):
 		print("Exiting...")
 		exit(0)
@@ -84,7 +99,7 @@ directory  = Directory(name)
 print(f"Directory {directory.name} has been created\n")
 while(1):
 	try:
-		option = input("Enter Command: ")
+		option = input("\nEnter Command: ")
 		driver(directory,OPTIONS,option)
 	except:
 		print("Exiting Filesystem...")
