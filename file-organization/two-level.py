@@ -47,7 +47,8 @@ OPTIONS = {
 	'display':4,
 	'exit':5,
 	'open folder':7,
-	'insert into':8
+	'insert into':8,
+	'remove from':9
 }
 
 
@@ -74,6 +75,10 @@ def driver(directory,OPTIONS,option):
 		for file in directory.files:
 			print(colored(f"{file} ","blue") ,end="")
 		print()
+	elif(OPTIONS[option]==9):
+		foldername = input("Enter directory name: ")
+		filename = input("Enter filename: ")
+		directory.folders[foldername].remove(filename)
 	elif(OPTIONS[option]==7):
 		foldername = input("Enter foldername to open: ")
 		if(foldername in directory.folders):
