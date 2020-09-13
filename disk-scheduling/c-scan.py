@@ -26,7 +26,7 @@ def seek(requests,head):
 		print(f"From {remaining[i]} to {remaining[i+1]}, seektime:{st}")
 		served += [remaining[i]]
 		time += st
-	served.append(remaining[i+1])
+	served.append(remaining[-1])
 	return ((f" Seektime: {time}\n Average Time: {time/len(requests)}"),served)
 
 def plot(requestaxis,timeaxis,time):
