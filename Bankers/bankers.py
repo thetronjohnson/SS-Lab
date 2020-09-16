@@ -38,12 +38,12 @@ def safestate(processes,available,maximum,allocated):
 processes = [i for i in range(P)]
 
 # available instances of resources
-available = [2,1,3]
+available = [3,3,2]
 # maximum resources needed by processes
 maximum = [
-	[3,5,3],
+	[7,5,3],
 	[3,2,2],
-	[4,0,2],
+	[9,0,2],
 	[2,2,2],
 	[4,3,3]
 ]
@@ -53,7 +53,7 @@ allocated = [
 	[2,0,0],
 	[3,0,2],
 	[2,1,1],
-	[0,2,2]
+	[0,0,2]
 ]
 
 
