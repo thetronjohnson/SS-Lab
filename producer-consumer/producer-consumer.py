@@ -6,6 +6,8 @@ MUTEX = 1
 
 def wait(s):
 	try:
+		while(s<0):
+			pass
 		s-=1
 		return(s)
 	except:
