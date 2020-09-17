@@ -1,4 +1,8 @@
 import matplotlib.pyplot as plt
+from math import ceil
+
+def roundup(x):
+	return ceil(x/100.0)*100
 
 class Scheduler:
 	def __init__(self,name):
@@ -19,7 +23,8 @@ def seek(requests,head):
 		time += st
 	served.append(requests[i+1])
 	print(f"From {requests[i+1]} to 0, seektime:0")
-	remaining = [i for i in requests if i not in served] +[0]
+	time += requests[i+1]
+	remaining = [i for i in requests if i not in served]
 	remaining.sort()
 	for i in range(len(remaining)-1):
 		st = abs((remaining[i+1]-remaining[i]))
@@ -46,9 +51,10 @@ scheduler = Scheduler("C-SCAN")
 print("Enter the order of requests separated by comma:")
 scheduler.requests += map(int,input().split(','))
 scheduler.head = int(input("Current position of head: "))
-timeaxis = [i for i in range(len(scheduler.requests)+2)]
-requestaxis = [scheduler.head] + scheduler.requests
+timeaxis = [i for i in range(len(scheduler.requests)+3)]
+requestaxis = [scheduler.head] + scheduler.requests +[0]
 requestaxis.sort()
+requestaxis.append(roundup(requestaxis[-1])-1)
 time,served = seek(requestaxis,scheduler.head)
 print(time)
 plot(served,timeaxis,time)
