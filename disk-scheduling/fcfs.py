@@ -38,4 +38,4 @@ for i in range(len(requestaxis)-1):
 	print(f"From {requestaxis[i]} to {requestaxis[i+1]}, seektime:{abs(requestaxis[i+1]-requestaxis[i])}")
 print()
 print(time)
-plot(requestaxis,timeaxis,time)
+#plot(requestaxis,timeaxis,time)

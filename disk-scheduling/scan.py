@@ -1,5 +1,8 @@
 import matplotlib.pyplot as plt
+from math import ceil
 
+def roundup(x):
+	return ceil(x/100.0)*100
 class Scheduler:
 	def __init__(self,name):
 		self.name = name
@@ -47,6 +50,7 @@ scheduler.head = int(input("Current position of head: "))
 timeaxis = [i for i in range(len(scheduler.requests)+1)]
 requestaxis = [scheduler.head] + scheduler.requests
 requestaxis.sort()
+requestaxis.append(roundup(requestaxis[-1])-1)
 time,served = seek(requestaxis,scheduler.head)
 print(time)
-plot(served,timeaxis,time)
+#plot(served,timeaxis,time)

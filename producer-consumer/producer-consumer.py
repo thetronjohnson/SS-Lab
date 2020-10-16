@@ -25,25 +25,30 @@ def producer(n):
 	MUTEX = wait(MUTEX)
 	BUFFER += [n]
 	MUTEX = signal(MUTEX)
-	print(f"Process added to Buffer")
+	print(f"Process {n} added to Buffer")
 
 def consumer(n):
 	global BUFFER,MUTEX
 	MUTEX = wait(MUTEX)
 	value = BUFFER.pop(BUFFER.index(n))
 	MUTEX = signal(MUTEX)
-	print(f"Process removed from Buffer")
+	print(f"Process {n} removed from Buffer")
 
+i=0
+j=0
 def main():
+	global i,j
 	command = int(input("\n1.Produce\n2.Consume\n3.Exit:\n=>"))
 	if(command==1):
 		if(MUTEX==1 and len(BUFFER)!=N):
-			producer(1)
+			i+=1
+			producer(i)
 		else:
 			print("Buffer is full\n")
 	elif(command==2):
 		if(MUTEX==1 and len(BUFFER)!=0):
-			consumer(1)
+			j+=1
+			consumer(j)
 		else:
 			print("Buffer is empty\n")
 
