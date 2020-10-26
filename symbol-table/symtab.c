@@ -37,7 +37,7 @@ void main(){
 			while(temp<20){
 				temp ++;
 				if(hash[val]==0){
-					hash[val]=1;
+					hash[val]=locctr;
 					fprintf(symbol, "%d\t%s\n",locctr,label);
 					break;
 				}

@@ -1,0 +1,6 @@
+START	-
+LDA	00
+ADD	01
+SUB	05
+STA	23
+END	-

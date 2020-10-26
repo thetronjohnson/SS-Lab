@@ -5,22 +5,18 @@ void main(){
         FILE *fint,*ftab,*flen,*fsym,*fout;
         int op1[10],txtlen,txtlen1,i,j=0,len;
         char add[5],symadd[5],op[5],start[10],temp[30],line[20],label[20],mne[10],operand[10],symtab[10],opmne[10];
-
         fint=fopen("input.txt","r");
         flen=fopen("length.txt","r");
         ftab=fopen("optab.txt","r");
         fsym=fopen("symbol.txt","r");
         fout=fopen("output.txt","w");
         fscanf(fint,"%s%s%s%s",add,label,mne,operand);
-
         if(strcmp(mne,"START")==0){
                 strcpy(start,operand);
                 fscanf(flen,"%d",&len);
         }
-
         fprintf(fout,"H^%s^%s^%d\nT^00%s^",label,start,len,start);
         fscanf(fint,"%s%s%s%s",add,label,mne,operand);
-
         while(strcmp(mne,"END")!=0){
         fscanf(ftab,"%s%s",opmne,op);
                 while(!feof(ftab)){
@@ -31,14 +27,12 @@ void main(){
                                         if(strcmp(operand,symtab)==0){
                                                 fprintf(fout,"%s%s^",op,symadd);
                                                 break;
-                                        }
-                                        else
+                                        }else
                                                 fscanf(fsym,"%s%s",symadd,symtab);
                                 }
                                 break;
-                        }
-                        else
-                        fscanf(ftab,"%s%s",opmne,op);
+                        }else
+                                fscanf(ftab,"%s%s",opmne,op);
                 }
                 if((strcmp(mne,"BYTE")==0)||(strcmp(mne,"WORD")==0)){
                         if(strcmp(mne,"WORD")==0)
@@ -62,5 +56,4 @@ void main(){
         fclose(fsym);
         fclose(flen);
         fclose(fout);
-
 }

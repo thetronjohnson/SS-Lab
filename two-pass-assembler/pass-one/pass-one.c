@@ -26,13 +26,14 @@ void main(){
 
 	while(strcmp(opcode,"END")!=0){
 		fprintf(output, "%d\t",locctr);
-		if(strcmp(label,"**")!=0){
+		if(strcmp(label,"-")!=0){
 			fprintf(symbol, "%s\t%d\n",label,locctr);
 		}
 		fscanf(optab,"%s\t%s",code,mnemonic);
 		while(strcmp(code,"END")!=0){
 			if(strcmp(opcode,code)==0){
 				locctr += 3;
+				break;
 			}
 			fscanf(optab,"%s\t%s",code,mnemonic);
 		}
@@ -46,7 +47,8 @@ void main(){
 			locctr += atoi(operand);
 		}
 		else if(strcmp(opcode,"BYTE")==0){
-			++locctr;
+			locctr+=strlen(operand)-2;
+    
 		}
 		fprintf(output, "%s\t%s\t%s\t\n",label,opcode,operand);
 		fscanf(input,"%s\t%s\t%s",label,opcode,operand);
